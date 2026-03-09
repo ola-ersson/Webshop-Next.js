@@ -1,12 +1,13 @@
-import Image from 'next/image';
 import Hero from './components/hero';
 import ProductListing from './components/product-listing';
+import { getProductsList } from './services';
 
-export default function Home() {
+export default async function Home() {
+  const productsList = await getProductsList();
   return (
     <main>
       <Hero />
-      <ProductListing />
+      <ProductListing productsList={productsList} />
     </main>
   );
 }
